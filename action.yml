@@ -48,8 +48,7 @@ runs:
         fi
         
         if [ ! -z $(git branch --remotes --list 'origin/${{ inputs.new_branch_name }}') ]; then
-            echo "Error: The branch name ${{ inputs.new_branch_name }} is already used."
-            exit 1
+            git push origin -d ${{ inputs.new_branch_name }}
         fi
         git checkout -b ${{ inputs.new_branch_name }}
         git config user.name github-actions
