@@ -50,6 +50,7 @@ runs:
         if [ ! -z $(git branch --remotes --list 'origin/${{ inputs.new_branch_name }}') ]; then
             git push origin -d ${{ inputs.new_branch_name }}
         fi
+        git pull
         git checkout -b ${{ inputs.new_branch_name }}
         git config user.name github-actions
         git config user.email github-actions@github.com
