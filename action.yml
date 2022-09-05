@@ -15,9 +15,6 @@ inputs:
     new_branch_ref:
         description: 'Ref to create the new branch name on other repository (e.g: main)'
         required: false
-    access_token:
-        description: 'A PAT that has access to the repository (if necessary)'
-        required: false
 
 runs:
   using: "composite"
