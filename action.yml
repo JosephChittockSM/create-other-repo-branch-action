@@ -22,20 +22,9 @@ inputs:
 runs:
   using: "composite"
   steps:
-
     - name: Clone informed repository
       run: |
-        if [ -z "${{ inputs.access_token }}" ]; then
-            git clone https://github.com/${{ inputs.repository_owner }}/${{ inputs.repository_name }}.git
-        else
-            git clone https://${{ inputs.access_token }}@github.com/${{ inputs.repository_owner }}/${{ inputs.repository_name }}.git
-        fi
-        if [ -d "${{ inputs.repository_name }}" ]; then
-            echo "Cloned ${{ inputs.repository_name }} repository successfully."
-        else
-            echo "Error: Couldn't clone ${{ inputs.repository_name }} repository. Check the inputs or the PAT scope."
-            exit 1
-        fi
+        git clone "https://$API_TOKEN_GITHUB@github.com/${{ inputs.repository_owner }}/${{ inputs.repository_name }}.git"
       shell: bash
 
     - name: Create new branch
